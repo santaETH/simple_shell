@@ -1,25 +1,17 @@
-#ifndef MAIN_HEADER_FILE
-#define MAIN_HEADER_FILE
-
-#define MAXIMUM_INPUT 100
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <limits.h>
-#include <errno.h>
 #include <unistd.h>
-#include <stdbool.h>
-#include <stdarg.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <limits.h>
+#include <fcntl.h>
+#include <errno.h>
 
-void printing(const char *format, ...);
-void show_prompt(void);
-char **tokenized_input(char *user_input);
-char **tokenization(char *src, const char *delimeter);
-
-#endif
-
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
