@@ -24,20 +24,3 @@ char **split_string(char *str, const char *delimiter, int *argc);
 void free_tokens(char **tokens);
 
 #endif
-
-<<<<<<< HEAD
-#define MAX_ARGS 100
-
-ssize_t _read(char *buf, int fd, size_t *n);
-ssize_t _getlne(char **line, size_t *n, int fd);
-char *n_parse(void);
-char **tokenization(char *line, char *del);
-char **ma_input(void);
-char *_strtok(char *str, const char *delim);
-long int _strlen(const char *str);
-char *search(char **neww, char *str, const char *delim);
-void _execve(const char *pathname, char *const argv[], char *const envp[]);
-
-#endif /* SHELL_H */
-=======
->>>>>>> 04ffb75a9b3ca42f83d543ef5439fab883d67a43
