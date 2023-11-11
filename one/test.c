@@ -2,17 +2,12 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <string.h>
-#include <stddef.h>
+
 
 int _execute(char *arguments, struct stat *statbuf, char **envp);
 bool check_file_status(char *pathname, struct stat *statbuf);
 char **split_string(char *str, const char *delim, int *argc);
 
-/**
- * custom_print - function to print the output of the code
- * @str: the str to be outputted to the output
- * Return: null
- */
 void custom_print(const char *str)
 {
 	size_t length = 0;
@@ -24,10 +19,6 @@ void custom_print(const char *str)
 	write(STDOUT_FILENO, str, strlen(str));
 }
 
-/**
- * main - introduction of the body to our code
- * Return: 0 for success
- */
 int main(void)
 {
 	char **env = NULL;
@@ -76,13 +67,6 @@ int main(void)
 	return (0);
 }
 
-/**
- * _execute - executes the commands passed to it
- * @arguments:  holds the user-entered command
- * @statbuf: used to check the status of the executable file
- * @envp: contains the environment variables for the executed command.
- * Return: 0 for success
- */
 int _execute(char *arguments, struct stat *statbuf, char **envp)
 {
 	int argc;
@@ -100,26 +84,14 @@ int _execute(char *arguments, struct stat *statbuf, char **envp)
 	exit(EXIT_FAILURE);
 }
 
-/**
- * check_file_status - checks the status of files passed to the environment
- * @pathname: represents the file whose status is being checked
- * @statbuf: holds the information of a file
- * Return: it return true if passed and false if not passed
- */
 bool check_file_status(char *pathname, struct stat *statbuf)
 {
 	int stat_return = stat(pathname, statbuf);
-
 	if (stat_return == 0)
 		return (true);
 	return (false);
 }
 
-/**
- * handle_error - used to handle the errors for the functions that are passed
- * @pid: the process running
- * Return: null
- */
 void handle_error(pid_t pid)
 {
 	if (pid == -1)

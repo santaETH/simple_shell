@@ -1,8 +1,6 @@
 #ifndef MAIN_HEADER_FILE
 #define MAIN_HEADER_FILE
 
-#define MAXIMUM_INPUT 100
-
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
@@ -17,10 +15,13 @@
 #include <stdbool.h>
 #include <stdarg.h>
 
-void printing(const char *format, ...);
-void show_prompt(void);
-char **tokenized_input(char *user_input);
-char **tokenization(char *src, const char *delimeter);
+void custom_print(const char *str);
+void handle_error(pid_t pid);
+bool check_file_status(char *pathname, struct stat *statbuf);
+int _execute(char *arguments, struct stat *statbuf, char **envp);
+char **tokenization(char *src, const char *delimiter);
+char **split_string(char *str, const char *delimiter, int *argc);
+void free_tokens(char **tokens);
 
 #endif
 
