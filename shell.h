@@ -1,17 +1,31 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef MAIN_HEADER_FILE
+#define MAIN_HEADER_FILE
 
+#include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
-#include <limits.h>
+#include <stdlib.h>
 #include <fcntl.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <limits.h>
 #include <errno.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <stdarg.h>
 
+void custom_print(const char *str);
+void handle_error(pid_t pid);
+bool check_file_status(char *pathname, struct stat *statbuf);
+int _execute(char *arguments, struct stat *statbuf, char **envp);
+char **tokenization(char *src, const char *delimiter);
+char **split_string(char *str, const char *delimiter, int *argc);
+void free_tokens(char **tokens);
+
+#endif
+
+<<<<<<< HEAD
 #define MAX_ARGS 100
 
 ssize_t _read(char *buf, int fd, size_t *n);
@@ -25,3 +39,5 @@ char *search(char **neww, char *str, const char *delim);
 void _execve(const char *pathname, char *const argv[], char *const envp[]);
 
 #endif /* SHELL_H */
+=======
+>>>>>>> 04ffb75a9b3ca42f83d543ef5439fab883d67a43
