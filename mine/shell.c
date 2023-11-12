@@ -19,6 +19,7 @@ int main(void)
 		if (!user_input || !*user_input)
 			break;
 
+		handle_variable(user_input);
 		arguments = tokenize_input(user_input);
 		if (!arguments || !*arguments)
 		{

@@ -22,7 +22,7 @@
 #define MAX_TOKENS 1024
 #define BUFFER_SIZE 1024
 
-void prompt(void);
+void terminal_prompt(void);
 
 char *get_inputs(void);
 void freeing_recent_arg(void);
@@ -38,11 +38,9 @@ int shell_setenv(char **args);
 int shell_unsetenv(char **args);
 int shell_env(void);
 int shell_clear(char **args);
-
-/* signal_handler.c */
-void handle_sigint(int sig);
-void handle_sigquit(int sig);
-void handle_sigstp(int sig);
+void handle_sigint(int signal);
+void handle_sigquit(int signal);
+void handle_sigstp(int signal);
 
 /* execute.c */
 int execute(char **args);
@@ -90,4 +88,5 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 void *_realloc(void *, unsigned int, unsigned int);
 void *_calloc(unsigned int nmemb, unsigned int size);
 
+void handle_variable(char *command);
 #endif

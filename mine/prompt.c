@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- * prompt - Print shell prompt to stdin stream.
- *
- * Return: void.
+ * prompt - the prompt to be displayed to the terminal for user input
+ * Return: null
  */
-void prompt(void)
+void terminal_prompt(void)
 {
 	_puts(PROMPT);
 	fflush(stdout);

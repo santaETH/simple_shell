@@ -13,7 +13,7 @@ char *get_inputs(void)
 
 	do
 	{
-		prompt();
+		terminal_prompt();
 		input_length = getline(&input, &input_size, stdin);
 
 		if (input_length == -1)
