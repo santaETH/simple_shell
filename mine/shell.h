@@ -24,7 +24,7 @@
 
 void prompt(void);
 
-char *user_input(void);
+char *get_inputs(void);
 void freeing_recent_arg(void);
 int prompt_execution(char **argv);
 void *get_line(void);

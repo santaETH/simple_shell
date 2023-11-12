@@ -15,7 +15,7 @@ int main(void)
 	signal(SIGTSTP, handle_sigstp);
 
 	do {
-		user_input = get_input();
+		user_input = get_inputs();
 		if (!user_input || !*user_input)
 			break;
 
@@ -26,7 +26,7 @@ int main(void)
 			free_tokens(arguments);
 			continue;
 		}
-		code_state = execute(arguments);
+		code_state = prompt_execution(arguments);
 		free(user_input);
 		free_tokens(arguments);
 
