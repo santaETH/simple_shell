@@ -5,7 +5,7 @@ static char *last_input;
  * user_input - takes the user commands passed from the command line
  * Return: the user input declared in terminal
 */
-char *get_inputsvoid)
+char *get_inputs(void)
 {
 	char *input = NULL;
 	size_t input_size = 0;
