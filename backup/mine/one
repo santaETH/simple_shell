@@ -1,0 +1,34 @@
+#include "shell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+void handle_variable(char *command) {
+    pid_t pid = getpid();
+    int last_exit_status = WEXITSTATUS(EXIT_SUCCESS);
+
+    char buffer[20];
+    char *variable;
+    char *status_variable = "$?";
+    char *path_variable = "$PATH";
+
+    snprintf(buffer, sizeof(buffer), "%d", pid);
+
+    while ((variable = strstr(command, "$$")) != NULL) {
+        memmove(variable + strlen(buffer), variable + 2, strlen(variable + 2) + 1);
+        memcpy(variable, buffer, strlen(buffer));
+    }
+
+    while ((variable = strstr(command, status_variable)) != NULL) {
+        memmove(variable + strlen(buffer), variable + strlen(status_variable), strlen(variable + strlen(status_variable)) + 1);
+        snprintf(variable, sizeof(buffer), "%d", last_exit_status);
+    }
+
+    while ((variable = strstr(command, path_variable)) != NULL) {
+        size_t path_len = strlen(getenv("PATH"));
+        memmove(variable + path_len, variable + strlen(path_variable), strlen(variable + strlen(path_variable)) + 1);
+        memcpy(variable, getenv("PATH"), path_len);
+    }
+}
+

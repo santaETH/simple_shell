@@ -1,0 +1,49 @@
+#include "shell.h"
+
+/**
+ * main - introduction phase of our code
+ * Return: 0 if success
+ */
+int main(void)
+{
+    char *user_input;
+    char **commands;
+    char **arguments;
+    int i;
+    int continue_execution = 1;
+
+    signal(SIGINT, handle_sigint);
+    signal(SIGQUIT, handle_sigquit);
+    signal(SIGTSTP, handle_sigstp);
+
+    do {
+        user_input = get_inputs();
+        if (!user_input || !*user_input)
+            break;
+
+        commands = tokenize_input(user_input, ";");
+        if (commands != NULL) {
+            for (i = 0; commands[i] != NULL; i++) {
+
+                handle_variable(commands[i]);
+
+
+                arguments = tokenize_input(commands[i], " \t\n");
+                if (arguments != NULL && *arguments != NULL) {
+                    continue_execution = prompt_execution(arguments);
+                    free_tokens(arguments);
+                } else {
+                    free_tokens(arguments);
+                    continue_execution = 1;
+                    break;
+                }
+            }
+            free_tokens(commands);
+        }
+        free(user_input);
+
+    } while (continue_execution);
+
+    return EXIT_SUCCESS;
+}
+
