@@ -4,6 +4,7 @@
  * main - introduction phase of our code
  * Return: 0 if success
  */
+
 int main(void)
 {
 	char *user_input;
@@ -25,10 +26,12 @@ int main(void)
 			free_tokens(arguments);
 			continue;
 		}
+
 		code_state = prompt_execution(arguments);
 		free(user_input);
 		free_tokens(arguments);
 		code_state = 1;
 	} while (code_state);
+
 	return (EXIT_SUCCESS);
 }

@@ -5,6 +5,7 @@
  * @arguments: pointer to pointer to teh arguments passed to the terminal
  * Return: null
  */
+
 void cd_implementation(char **arguments)
 {
 	char *directories = arguments[1];

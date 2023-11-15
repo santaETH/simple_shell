@@ -1,9 +1,11 @@
 #include "shell.h"
+
 /**
  * builtins_check - the function checks if the commands are builtin
- * @arguments:pointer to pointer to the arguments checked as arguments
+ * @arguments: pointer to pointer to the arguments checked as argu.
  * Return: 1 if builtin and 0 otherwise
  */
+
 int builtins_check(char **arguments)
 {
 	if (!arguments[0])

@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * environment_variables - he function prints all the variables in the environ
+ * environment_variables - The Fun prints all the variables in the env
  * Return: null
  */
+
 int environment_variables(void)
 {
 	int i;
